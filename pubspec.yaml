@@ -1,0 +1,24 @@
+name: urdu_novel_app
+description: A modern Urdu novel reader app with GetX and MVVM.
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get:
+  google_fonts:
+  flutter_native_splash:
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/logo.png
+  android: true
+  ios: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/novels/
+    - assets/logo.jpeg
