@@ -18,10 +18,10 @@ class UrduNovelApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'NotoNastaliqUrdu',
         primarySwatch: Colors.teal,
-        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
       ),
       initialRoute: AppRoutes.splash,
-      getPages: AppRoutes.routes,
+      getPages: AppRoutes.pages,
     );
   }
 }

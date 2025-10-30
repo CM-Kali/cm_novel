@@ -1,5 +1,3 @@
-import 'chapter_model.dart';
-
 class NovelModel {
   final String title;
   final String author;
@@ -10,4 +8,11 @@ class NovelModel {
     required this.author,
     required this.chapters,
   });
+}
+
+class ChapterModel {
+  final String title;
+  final String content;
+
+  ChapterModel({required this.title, required this.content});
 }
