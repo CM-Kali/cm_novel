@@ -1,36 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../data/sources/local_novel_source.dart';
-import '../../routes/app_routes.dart';
+import 'home_controller.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final novels = LocalNovelSource.novels;
+    final controller = Get.put(HomeController());
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Urdu Novels')),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(12),
-        itemCount: novels.length,
-        itemBuilder: (context, index) {
-          final novel = novels[index];
-          return Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            elevation: 3,
-            child: ListTile(
-              title: Text(novel.title, style: const TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text('By ${novel.author}', style: const TextStyle(color: Colors.grey)),
-              trailing: const Icon(Icons.arrow_forward_ios),
-              onTap: () {
-                Get.toNamed(AppRoutes.chapters, arguments: novel);
-              },
-            ),
-          );
-        },
+      appBar: AppBar(
+        title: const Text('CM Urdu Novels'),
+        centerTitle: true,
       ),
+      body: Obx(() {
+        if (controller.loading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        return ListView.builder(
+          itemCount: controller.novels.length,
+          itemBuilder: (context, index) {
+            final novel = controller.novels[index];
+            return Card(
+              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              child: ListTile(
+                title: Text(
+                  novel.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text('By ${novel.author}'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () => controller.openChapters(novel),
+              ),
+            );
+          },
+        );
+      }),
     );
   }
 }

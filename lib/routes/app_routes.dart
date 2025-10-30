@@ -7,13 +7,13 @@ import '../modules/reader/reader_view.dart';
 class AppRoutes {
   static const splash = '/';
   static const home = '/home';
-  static const chapters = '/chapters';
+  static const chapterList = '/chapters';
   static const reader = '/reader';
 
-  static final routes = [
+  static final pages = [
     GetPage(name: splash, page: () => const SplashView()),
     GetPage(name: home, page: () => const HomeView()),
-    GetPage(name: chapters, page: () => const ChapterListView()),
+    GetPage(name: chapterList, page: () => const ChapterListView()),
     GetPage(name: reader, page: () => const ReaderView()),
   ];
 }
